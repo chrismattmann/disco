@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Copyright (c) 2007 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+-->
+
+<!ELEMENT connector (event?, procedurecall?, dataaccess, stream, arbitrator?, distributor) >
+<!ATTLIST connector class NMTOKEN #REQUIRED >
+<!ATTLIST connector name NMTOKEN #REQUIRED >
+
+<!-- Event atomic connector definition -->
+<!ELEMENT event (cardinality, delivery, priority, synchronicity, notification, causality, mode) >
+<!ELEMENT cardinality ( producers?, observers?, eventpatterns? ) >
+<!ATTLIST cardinality observers CDATA #IMPLIED >
+<!ATTLIST cardinality producers CDATA #IMPLIED >
+<!ATTLIST cardinality receivers CDATA #IMPLIED >
+<!ELEMENT producers ( #PCDATA ) >
+<!ELEMENT observers ( #PCDATA ) >
+<!ELEMENT eventpatterns ( pattern )*>
+<!ELEMENT pattern ( #PCDATA ) >
+
+<!ELEMENT priority ( outgoing, incoming ) >
+<!ELEMENT outgoing EMPTY >
+<!ATTLIST outgoing setby NMTOKEN #REQUIRED >
+<!ELEMENT incoming EMPTY >
+<!ATTLIST incoming setby NMTOKEN #REQUIRED >
+
+<!ELEMENT synchronicity ( #PCDATA ) >
+<!ELEMENT notification ( #PCDATA ) >
+<!ELEMENT causality EMPTY >
+<!ELEMENT mode ( software ) >
+<!ATTLIST mode type NMTOKEN #REQUIRED >
+<!ELEMENT software ( #PCDATA ) >
+
+<!-- Data Access atomic connector definition -->
+<!ELEMENT dataaccess (locality, accesses, availabilities, accessibility, lifecycle, cardinality)>
+<!ELEMENT locality ( #PCDATA ) >
+<!ELEMENT accesses ( access )+ >
+<!ELEMENT access ( #PCDATA ) >
+<!ELEMENT availabilities ( transient, persistents ) >
+<!ELEMENT transient ( #PCDATA ) >
+<!ELEMENT persistents ( persistent )* >
+<!ELEMENT persistent ( #PCDATA ) >
+<!ELEMENT accessibility EMPTY >
+<!ATTLIST accessibility private NMTOKEN #REQUIRED >
+<!ATTLIST accessibility public NMTOKEN #REQUIRED >
+<!ELEMENT lifecycle EMPTY >
+<!ELEMENT cardinality EMPTY >
+<!ATTLIST cardinality receivers CDATA #IMPLIED >
+<!ATTLIST cardinality senders CDATA #IMPLIED >
+<!ATTLIST cardinality sender CDATA #IMPLIED>
+<!ATTLIST cardinality receiver CDATA #IMPLIED>
+
+<!-- Distributor atomic connector definition-->
+<!ELEMENT distributor ( naming, delivery, routing ) >
+<!ELEMENT naming ( structure ) >
+<!ATTLIST naming type CDATA #REQUIRED >
+<!ELEMENT structure ( #PCDATA ) >
+<!ELEMENT delivery ( #PCDATA | mechanisms | semantics )* >
+<!ATTLIST delivery type CDATA #IMPLIED >
+<!ELEMENT routing ( membership, path ) >
+<!ATTLIST routing type CDATA #REQUIRED >
+<!ELEMENT membership ( #PCDATA ) >
+<!ELEMENT path EMPTY >
+<!ATTLIST path cached NMTOKEN #REQUIRED >
+<!ATTLIST path dynamic NMTOKEN #REQUIRED >
+<!ATTLIST path static NMTOKEN #REQUIRED >
+
+<!-- Stream atomic connector definition -->
+<!ELEMENT stream ( deliveries, bounds, buffering, throughput, state, identity, localities, synchronicity, formats, cardinality ) >
+<!ELEMENT deliveries ( delivery+ ) >
+<!ELEMENT bounds ( #PCDATA ) >
+<!ELEMENT buffering ( #PCDATA ) >
+<!ELEMENT throughput ( #PCDATA ) >
+<!ELEMENT state ( #PCDATA ) >
+<!ELEMENT identity ( #PCDATA ) >
+<!ELEMENT localities ( locality+ ) >
+<!ELEMENT locality ( #PCDATA ) >
+<!ELEMENT synchronicity ( #PCDATA ) >
+<!ELEMENT format ( #PCDATA ) >
+<!ELEMENT formats ( format+ ) >
+
+<!-- Arbitrator atomic connector definition -->
+<!ELEMENT arbitrator ( faulthandling, concurrency, transactions, security, scheduling ) >
+<!ELEMENT faulthandling ( #PCDATA ) >
+<!ELEMENT concurrency ( mechanism, weight ) >
+<!ATTLIST concurrency type NMTOKEN #REQUIRED >
+<!ELEMENT mechanism ( #PCDATA ) >
+<!ELEMENT mechanisms ( mechanism+ ) >
+<!ELEMENT weight ( #PCDATA ) >
+<!ELEMENT transactions ( nesting, awareness, isolation ) >
+<!ELEMENT nesting ( #PCDATA ) >
+<!ELEMENT awareness ( #PCDATA ) >
+<!ELEMENT isolation ( #PCDATA ) >
+<!ELEMENT security ( authentication, authorization, privacies, integrity, durability ) >
+<!ATTLIST security required NMTOKEN #REQUIRED >
+<!ELEMENT authentication EMPTY >
+<!ELEMENT authorization ( authType+ ) >
+<!ELEMENT authType ( #PCDATA ) >
+<!ELEMENT privacies ( privacy+ ) >
+<!ELEMENT privacy ( #PCDATA ) >
+<!ELEMENT integrity ( #PCDATA ) >
+<!ELEMENT durability ( #PCDATA ) >
+<!ELEMENT scheduling ( #PCDATA ) >
+
+<!-- Procedure Call atomic connector -->
+<!ELEMENT procedurecall ( parameters, entrypoint, invocation, synchronicity, cardinality, accessibility ) >
+<!ELEMENT parameters ( datatransfer, semantics, returnvalue, invocationrecord ) >
+<!ELEMENT datatransfer ( method+ ) >
+<!ELEMENT method ( #PCDATA ) >
+<!ELEMENT semantic ( #PCDATA ) >
+<!ELEMENT semantics ( #PCDATA | semantic )* >
+<!ELEMENT returnvalue ( #PCDATA ) >
+<!ELEMENT invocationrecord ( #PCDATA ) >
+
+<!ELEMENT entrypoint ( single ) >
+<!ELEMENT single ( #PCDATA ) >
+
+<!ELEMENT invocation ( explicit ) >
+<!ELEMENT explicit ( #PCDATA ) >
+
+<!ELEMENT synchronicity ( #PCDATA ) >
+
+<!ELEMENT accessibility EMPTY >
+<!ATTLIST accessibility private NMTOKEN #REQUIRED >
+<!ATTLIST accessibility protected NMTOKEN #IMPLIED >
+<!ATTLIST accessibility public NMTOKEN #REQUIRED >
+

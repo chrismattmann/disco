@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<!--
+ * Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+ -->
+ 
+ <valRange>
+   <!--  Data Access Connector metadata -->
+   <attribute name="data_access_locality">
+     <val name="Process"/>
+     <val name="Global"/>
+   </attribute>
+   <attribute name="data_access_accesses">
+     <val name="Accessor"/>
+     <val name="Mutator"/>
+   </attribute>
+   <attribute name="data_access_persistance">
+     <val name="Dynamic Data Exchange"/>
+     <val name="Database Access"/>
+     <val name="Repository Access"/>
+     <val name="File I/O"/>
+   </attribute>
+   <attribute name="data_access_transient_availability">
+     <val name="Session-Based"/>
+     <val name="Peer-Based"/>
+     <val name="Cache"/>   
+   </attribute>
+   <attribute name="data_access_cardinality_senders">
+     <val name="1"/>
+     <val name="*"/>   
+   </attribute>
+   <attribute name="data_access_cardinality_receivers">
+     <val name="1"/>
+     <val name="*"/>
+   </attribute>
+   
+   <!--  Stream Connector metadata -->
+   <attribute name="stream_bounds">
+     <val name="Bounded"/>
+     <val name="Un-Bounded"/>
+   </attribute>
+   <attribute name="stream_localities">
+     <val name="Local"/>
+     <val name="Remote"/>
+   </attribute>
+   <attribute name="stream_throughput">
+     <val name="bps"/>
+     <val name="Higher order units"/>
+   </attribute>
+   <attribute name="stream_deliveries">
+     <val name="Exactly Once"/>
+     <val name="At Least Once"/>
+     <val name="Best Effort"/>
+   </attribute>
+   <attribute name="stream_formats">
+     <val name="Raw"/>
+     <val name="Structured"/>
+   </attribute>
+   <attribute name="stream_identity">
+     <val name="Named"/>
+     <val name="Anonymous"/>
+   </attribute>
+   <attribute name="stream_cardinality_senders">
+     <val name="1"/>
+     <val name="*"/>   
+   </attribute>
+   <attribute name="stream_buffering">
+     <val name="Buffered"/>
+     <val name="Un-Buffered"/>   
+   </attribute>
+   <attribute name="stream_state">
+     <val name="Stateful"/>
+     <val name="Stateless"/>
+   </attribute>
+   <attribute name="stream_cardinality_receivers">
+     <val name="1"/>
+     <val name="*"/>   
+   </attribute> 
+   <attribute name="stream_synchronicity">
+     <val name="Synchronous"/>
+     <val name="Time Out Synchronous"/> 
+     <val name="Asynchronous"/>  
+   </attribute>  
+   
+   <!--  Distributor Connector metadata -->
+   <attribute name="distributor_naming_type">
+     <val name="registry-based"/>
+     <val name="attribute-based"/>
+   </attribute>
+   <attribute name="distributor_naming_structures">
+     <val name="Heirarchical"/>
+     <val name="Flat"/>
+   </attribute>
+   <attribute name="distributor_routing_membership">
+     <val name="ad-hoc"/>
+     <val name="bounded"/>
+   </attribute>
+   <attribute name="distributor_routing_type">
+     <val name="content-based"/>
+     <val name="tcp/ip"/>
+     <val name="architecture configuration"/>   
+     <val name="udp"/>
+     <val name="tracker"/>
+   </attribute>
+   <attribute name="distributor_routing_path">
+     <val name="dynamic"/>
+     <val name="cached"/>
+     <val name="static"/>   
+   </attribute>
+   <attribute name="distributor_delivery_semantics">
+     <val name="Exactly Once"/>
+     <val name="At Least Once"/>
+     <val name="Best Effort"/>   
+   </attribute>
+   <attribute name="distributor_delivery_type">
+     <val name="RMI Message"/>
+     <val name="GridFTP Message"/>
+     <val name="SOAP Message"/>
+     <val name="Event"/>
+     <val name="HTTP Message"/>
+     <val name="Peer Pieces"/>
+     <val name="CUDP Data Message"/>
+     <val name="bbFTP Message"/>
+     <val name="UFTP Message"/>
+     <val name="SCP Encrypted Data Message"/>
+     <val name="FTP Message"/>
+   </attribute>
+   <attribute name="distributor_delivery_mechanisms">
+     <val name="Unicast"/>
+     <val name="Multicast"/>
+     <val name="Broadcast"/>
+   </attribute>
+   
+   <!--  Event Connector metadata -->
+   <attribute name="event_mode_type">
+     <val name="Event"/>
+     <val name="Synchronous Notification"/>
+   </attribute>
+   <attribute name="event_mode_softwares">
+     <val name="Signals"/>   
+   </attribute>
+   <attribute name="event_priority_incoming">
+     <val name="producers"/>
+     <val name="consumers"/>
+   </attribute>
+   <attribute name="event_priority_outgoing">
+     <val name="producers"/>
+     <val name="consumers"/>
+   </attribute>
+   <attribute name="event_cardinality_producer_cardinality">
+     <val name="1"/>
+     <val name="*"/>
+   </attribute>
+   <attribute name="event_cardinality_observer_cardinality">
+     <val name="1"/>
+     <val name="*"/>
+   </attribute>
+   <attribute name="event_cardinality_observers">
+     <val name="Clients"/>
+     <val name="Threads"/>
+   </attribute>
+   <attribute name="event_cardinality_producers">
+     <val name="Access Points"/>
+     <val name="Components"/>
+   </attribute>
+   <attribute name="event_cardinality_patterns">
+     <val name="Unicast"/>
+     <val name="Asynchronous"/>
+     <val name="Pub-Sub"/>
+     <val name="Multicast"/>
+     <val name="Broadcast"/>
+     <val name="Best Effort"/>
+   </attribute>
+   <attribute name="event_delivery">
+     <val name="Best Effort"/>
+     <val name="At Least Once"/>
+   </attribute>
+   <attribute name="event_notification">
+     <val name="Pub-Sub"/>
+     <val name="Queued Dispatch"/>
+   </attribute>
+   <attribute name="event_synchronicity">
+     <val name="Asynchronous"/>
+     <val name="Synchronous"/>
+   </attribute>
+   
+   <!--  Procedure Call metadata -->
+   <attribute name="procedure_call_semantics">
+     <val name="Keyword"/>
+     <val name="Implicit"/>
+   </attribute>
+   <attribute name="procedure_call_params_invocation_record">
+     <val name="Globus Log Layer"/>
+     <val name="HTTP Server log"/>
+     <val name="RMI Registry"/>
+     <val name="CORBA Name Registry"/>
+     <val name="Web Server"/>
+   </attribute>
+   <attribute name="procedure_call_params_datatransfer">
+     <val name="value"/>
+     <val name="reference"/>
+   </attribute>
+   <attribute name="procedure_call_params_return_value">
+     <val name="HTTP Response"/>
+     <val name="RMI message"/>
+     <val name="GridFTP message"/>
+     <val name="SOAP message"/>
+     <val name="CORBA message"/>  
+   </attribute>
+   <attribute name="procedure_call_cardinality_receivers">
+     <val name="1"/>
+     <val name="*"/>
+   </attribute>
+   <attribute name="procedure_call_cardinality_senders">
+     <val name="1"/>
+     <val name="*"/>
+   </attribute>
+   <attribute name="procedure_call_invocation_explicit">
+     <val name="Method Call"/>
+   </attribute>
+   <attribute name="procedure_call_synchronicity">
+     <val name="Synchronous"/>
+     <val name="Asynchronous"/>
+   </attribute>
+ </valRange>
+ 

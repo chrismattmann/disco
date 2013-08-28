@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Copyright (c) 2007 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+-->
+
+<!ELEMENT distributionScenario ( totalVolume?, deliverySchedule?, numUsers?, 
+userTypes?, geographicDistribution?, performancereqs?, accessPolicies?, dataTypes? ) >
+
+<!-- the total volume (in MB, GB, TB) for the scenario -->
+<!ELEMENT totalVolume ANY>
+<!ATTLIST totalVolume valtype CDATA "discrete">
+
+<!-- access policies required on the distribution -->
+<!ELEMENT accessPolicies ( policy+ ) >
+<!ELEMENT policy ( #PCDATA ) >
+
+<!-- the types of data (e.g., data metadata) part of the transfer -->
+<!ELEMENT dataTypes ( type+ ) >
+<!ELEMENT type ( #PCDATA ) >
+
+<!-- the data delivery schedule, including vol/per interval and the number of intervals -->
+<!ELEMENT deliverySchedule ( volumePerInterval, numIntervals ) >
+<!ELEMENT volumePerInterval ANY >
+<!ATTLIST volumePerInterval valtype CDATA "discrete">
+
+<!ELEMENT numIntervals ANY >
+<!ATTLIST numIntervals valtype CDATA "discrete">
+
+
+<!-- any performance constraints on the scenario -->
+<!ELEMENT performancereqs ( consistency, dependability, scalability, efficiency ) >
+
+<!ELEMENT scalability ( #PCDATA ) >
+<!ELEMENT dependability ( #PCDATA ) >
+<!ELEMENT consistency ( #PCDATA ) >
+<!ELEMENT efficiency ( #PCDATA ) >
+
+<!-- whether you're sending data across the WAN, LAN, etc. -->
+<!ELEMENT geographicDistribution ( type+ ) >
+
+<!-- the number of users to send data to -->
+<!ELEMENT numUsers ANY >
+<!ATTLIST numUsers valtype CDATA "discrete">
+
+<!-- the different types of users to send the data to -->
+<!ELEMENT userTypes ANY >
+<!ATTLIST userTypes valtype CDATA "discrete">
+

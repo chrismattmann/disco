@@ -1,0 +1,119 @@
+<!-- 
+/* Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ */
+-->
+<project default="dist:build-bin" xmlns:ant="jelly:ant" xmlns:deploy="deploy" xmlns:j='jelly:core'>
+
+<!-- copies the context xml files to the target directory -->
+<postGoal name="war">
+  <ant:copy file="${maven.src.dir}/resources/disco-webapp.xml" todir="${maven.build.dir}"/>
+  <ant:copy file="${maven.src.dir}/resources/disco-webapp-tomcat-5.5.9.xml" todir="${maven.build.dir}"/>
+</postGoal>
+
+<goal name='dist:prepare-bin-filesystem'
+	prereqs='xdoc:init, jar:jar, site:generate'
+	description='Builds the binary distribution file system'>
+    <ant:delete dir='${maven.dist.bin.assembly.dir}'/>
+    <ant:mkdir dir='${maven.dist.bin.assembly.dir}'/>
+	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/lib"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/etc"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/dcp"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/kb"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/kb/bayes"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/kb/score"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/kb/optimizing"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/scenarios"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/answers"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/performance"/>
+   	<ant:mkdir dir="${maven.dist.bin.assembly.dir}/logs"/>
+   	<ant:copy todir="${maven.dist.bin.assembly.dir}/bin">
+    	<fileset dir="${basedir}/src/bin">
+       		<include name="disco*"/>
+     	</fileset>
+     	<fileset dir="${basedir}/src/perl">
+     	    <include name="*.pl"/>
+     	</fileset>
+   	</ant:copy>
+   	<ant:chmod dir="${maven.dist.bin.assembly.dir}/bin" perm="ugo+rwx" 
+       includes="**/disco*"/>
+   	<ant:copy todir="${maven.dist.bin.assembly.dir}/etc">
+    	<fileset dir="${basedir}/src/conf">
+        	<include name="*.xml"/>
+        	<include name="*.properties"/>
+    	</fileset>
+   	</ant:copy>
+   	<ant:copy todir="${maven.dist.bin.assembly.dir}/kb/bayes">
+    	<fileset dir="${basedir}/src/bayesian">
+        	<include name="*.xml"/>
+    	</fileset>
+   	</ant:copy>
+   	<ant:copy todir="${maven.dist.bin.assembly.dir}/kb/optimizing">
+    	<fileset dir="${basedir}/src/competencyfunctions">
+        	<include name="**/**"/>
+    	</fileset>
+   	</ant:copy>   	
+   	<ant:copy todir="${maven.dist.bin.assembly.dir}/kb/score">
+    	<fileset dir="${basedir}/src/scorefunctions">
+        	<include name="**/**"/>
+    	</fileset>
+   	</ant:copy>
+   	<ant:copy todir="${maven.dist.bin.assembly.dir}/scenarios">
+    	<fileset dir="${basedir}/src/scenarios">
+        	<include name="**/**"/>
+    	</fileset>
+   	</ant:copy>
+    <ant:copy todir="${maven.dist.bin.assembly.dir}/answers">
+    	<fileset dir="${basedir}/src/answers">
+        	<include name="**/**"/>
+    	</fileset>
+   	</ant:copy>  	
+    <ant:copy todir="${maven.dist.bin.assembly.dir}/dcp">
+    	<fileset dir="${basedir}/src/dcp">
+        	<include name="*.xml"/>
+    	</fileset>
+   	</ant:copy> 
+    <ant:copy todir="${maven.dist.bin.assembly.dir}/performance">
+    	<fileset dir="${basedir}/src/performance">
+        	<include name="*.xml"/>
+    	</fileset>
+   	</ant:copy> 
+
+   	<ant:copy file="${basedir}/LICENSE.txt" todir="${maven.dist.bin.assembly.dir}"/>
+   	<deploy:copy-deps todir="${maven.dist.bin.assembly.dir}/lib"/>
+    <!-- copy the code to the lib directory -->
+	<ant:copy todir='${maven.dist.bin.assembly.dir}/lib'>
+		<ant:fileset dir='${maven.build.dir}'>
+			<ant:include name='${maven.final.name}.jar'/>
+		</ant:fileset>
+	</ant:copy>
+	<!-- copy docs -->
+    <j:set var='docsDest' value='${maven.docs.dest}'/>
+    <ant:copy todir='${maven.dist.bin.assembly.dir}/docs'>
+      	<ant:fileset dir='${docsDest}'>
+        	<ant:include name='**'/>
+      	</ant:fileset>
+    </ant:copy>
+</goal>
+
+</project>

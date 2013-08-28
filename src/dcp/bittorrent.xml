@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+ -->
+<disco:connector xmlns:disco="http://softarch.usc.edu/1.0/disco" name="Bittorrent" class="P2P">
+  <dataaccess>
+    <locality>Process</locality>
+    <accesses>
+      <access>Accessor</access>
+    </accesses>
+    <availabilities>
+      <transient>Peer-Based</transient>
+      <persistents/>
+    </availabilities>
+    <accessibility private="true" public="true"/>
+    <lifecycle/>
+    <cardinality senders="*" receivers="*"/>
+  </dataaccess>
+  <stream>
+    <deliveries>
+      <delivery>Best Effort</delivery>
+      <delivery>At Least Once</delivery>
+    </deliveries>
+    <bounds>Bounded</bounds>
+    <buffering>Buffered</buffering>
+    <throughput>bps</throughput>
+    <state>Stateful</state>
+    <identity>Named</identity>
+    <localities>
+      <locality>Remote</locality>
+      <locality>Local</locality>
+    </localities>
+    <synchronicity>Time Out Synchronous</synchronicity>
+    <formats>
+      <format>Structured</format>
+      <format>Raw</format>
+    </formats>
+    <cardinality senders="*" receivers="*"/>
+  </stream>
+  <arbitrator>
+    <faulthandling>Voting</faulthandling>
+    <concurrency type="Point-to-Point">
+      <mechanism>Rendezvous</mechanism>
+      <weight>Heavy</weight>
+    </concurrency>
+    <transactions>
+      <nesting>Multiple</nesting>
+      <awareness>Supported</awareness>
+      <isolation>Read/Write</isolation>
+    </transactions>
+    <security required="false">
+      <authentication/>
+      <authorization>
+        <authType>capability</authType>
+        <authType>fairness</authType>
+      </authorization>
+      <privacies>
+        <privacy>Anonymous</privacy>
+        <privacy>Tracked</privacy>
+      </privacies>
+      <integrity>SHA</integrity>
+      <durability>Multi-Session</durability>
+    </security>
+    <scheduling>Ensure Reassmbly</scheduling>  
+  </arbitrator>
+  <distributor>
+   <naming type="attribute-based">
+     <structure>Flat</structure>
+   </naming>
+   <delivery type="Peer Pieces">
+     <semantics>
+        <semantic>Best Effort</semantic>
+        <semantic>At Least Once</semantic>
+     </semantics>
+     <mechanisms>
+       <mechanism>Unicast</mechanism>
+       <mechanism>Broadcast</mechanism>
+     </mechanisms>
+   </delivery>
+     <routing type="tracker">
+      <membership>ad-hoc</membership>
+      <path static="true" dynamic="true" cached="true"/>
+    </routing>
+  </distributor>
+</disco:connector>

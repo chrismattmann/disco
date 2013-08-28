@@ -1,0 +1,88 @@
+Processing: [8] DCPs
+============================================
+Total Client-Server DCPs: [4]
+Total GRID DCPs: [1]
+Total Event DCPs: [2]
+Total P2P DCPs: [1]
+============================================
+Atomic Connector Statistics
+ *** Procedure Call Stats ***
+Attribute: [proc_call_params_return_value]: Values: [HTTP Response:1][RMI message:1][GridFTP Message:1][SOAP Message:1][CORBA Message:1]
+Attribute: [proc_call_cardinality_senders]: Values: [1:5]
+Attribute: [proc_call_invocation_explicit]: Values: [Method Call:5]
+Attribute: [proc_call_entry_point_single]: Values: [The entry point is delivered by the service WSDL document,
+       which can be discovered from an associated UDDI registry, or from 
+       the service URL by appending "?wsdl"
+       :1][The entry point is delivered by the corresponding 
+      RMI Registry. The entry point is in the form of a specific 
+      port that the RMI Server component runs on.
+       :1][The entry point is delivered by the corresponding 
+      CORBA Name Server Registry. The entry point is in the form of a 
+      specific port that the CORBA Name Server component runs on.
+     :1][The standard single entry point for a GridFTP connector 
+      is the GridFTP client API, defined in the GridFTP RFC. The API 
+      is provided by the underlying Globus Toolkit. 
+     :1][Socket Listener, Port 80 (Server) HTTP formatted 
+      request sent through socket to port 80 (Client).
+      :1]
+Attribute: [proc_call_params_invocation_record]: Values: [Globus Log Layer:1][HTTP Server log:1][RMI registry:1][CORBA Name Registry:1][Web Server:1]
+Attribute: [proc_call_params_datatransfer]: Values: [value:5][reference:2]
+Attribute: [proc_call_accessibility]: Values: [public:5][protected:3][private:3]
+Attribute: [proc_call_cardinality_receivers]: Values: [1:5]
+Attribute: [proc_call_params_semantics]: Values: [keyword:5]
+ *** Event Stats ***
+Attribute: [event_delivery]: Values: [Best Effort:2]
+Attribute: [event_notification]: Values: [Pub-Sub:1][Queued Dispatch:1]
+Attribute: [event_cardinality_eventpattern]: Values: [Unicast:2][Asychronous:2][Pub-Sub:1][Multicast:2][Broadcast:2][Best Effort:2]
+Attribute: [event_cardinality_producer_cardinality]: Values: [*:2]
+Attribute: [event_cardinality_observers]: Values: [Clients:1][Threads:1]
+Attribute: [event_priority_incoming]: Values: [consumers:2]
+Attribute: [event_causality]: Values: [null:2]
+Attribute: [event_priority_outgoing]: Values: [producers:2]
+Attribute: [event_synchronicity]: Values: [Asychronous:2]
+Attribute: [event_cardinality_producers]: Values: [Components:1][Access Points:1]
+Attribute: [event_mode_softwares]: Values: [Signals:2]
+Attribute: [event_cardinality_observer_cardinality]: Values: [*:2]
+Attribute: [event_mode_type]: Values: [Event:2]
+ *** Arbitrator Stats *** 
+Attribute: [arbitrator_security_authentication]: Values: [null:1]
+Attribute: [arbitrator_transactions_awareness]: Values: [Supported:1]
+Attribute: [arbitrator_transactions_isolation]: Values: [Read/Write:1]
+Attribute: [arbitrator_concurrency_weight]: Values: [Heavy:1]
+Attribute: [arbitrator_scheduling]: Values: [Ensure Reassmbly:1]
+Attribute: [arbitrator_security_authorizations]: Values: [fairness:1][capability:1]
+Attribute: [arbitrator_concurrency_type]: Values: [Point-to-Point:1]
+Attribute: [arbitrator_security_integrity]: Values: [SHA:1]
+Attribute: [arbitrator_concurrency_mechanism]: Values: [Rendezvous:1]
+Attribute: [arbitrator_transactions_nesting]: Values: [Multiple:1]
+Attribute: [arbitrator_security_durability]: Values: [Multi-Session:1]
+Attribute: [arbitrator_faulthandling]: Values: [Voting:1]
+ *** Data Access Stats *** 
+Attribute: [data_access_locality]: Values: [Process:6][Global:2]
+Attribute: [data_access_persistences]: Values: [Dynamic Data Exchange:7][Database Access:7][Repository Access:7][File I/O:7]
+Attribute: [data_access_lifecycle]: Values: [null:8]
+Attribute: [data_access_avail_transient]: Values: [Session-Based:6][Cache:1][Peer-Based:1]
+Attribute: [data_access_cardinality_receivers]: Values: [*:4][1:4]
+Attribute: [data_access_accesses]: Values: [Accessor:8][Mutator:7]
+Attribute: [data_access_cardinality_senders]: Values: [*:3][1:5]
+ *** Stream Stats *** 
+Attribute: [stream_formats]: Values: [Raw:8][Structured:8]
+Attribute: [stream_cardinality_senders]: Values: [*:3][1:5]
+Attribute: [stream_localities]: Values: [Remote:8][Local:5]
+Attribute: [stream_deliveries]: Values: [Exactly Once:5][At Least Once:1][Best Effort:3]
+Attribute: [stream_throughput]: Values: [bps:8]
+Attribute: [stream_cardinality_receivers]: Values: [*:4][1:4]
+Attribute: [stream_state]: Values: [Stateful:6][Stateless:2]
+Attribute: [sream_identity]: Values: [Named:8]
+Attribute: [stream_bounds]: Values: [Bounded:8]
+Attribute: [stream_synchronicity]: Values: [Asynchronous:2][Time Out Synchronous:6]
+Attribute: [stream_buffering]: Values: [Buffered:8]
+ *** Distributor Stats *** 
+Attribute: [distributor_routing_membership]: Values: [ad-hoc:3][bounded:5]
+Attribute: [distributor_delivery_type]: Values: [RMI Message:1][GridFTP Message:1][SOAP Message:1][Event:2][HTTP Message:2][Peer Pieces:1]
+Attribute: [distributor_naming_type]: Values: [registry-based:6][attribute-based:2]
+Attribute: [distributor_naming_structures]: Values: [Heirarchical:2][Flat:4]
+Attribute: [distributor_routing_type]: Values: [content-based:1][tcp/ip:5][architecture configuration:1][tracker:1]
+Attribute: [distributor_delivery_semantics]: Values: [Exactly Once:5][At least once:1][Best Effort:3]
+Attribute: [distributor_routing_path]: Values: [dynamic:5][cached:3][static:6]
+Attribute: [distributor_delivery_mechanisms]: Values: [Unicast:8][Multicast:2][Broadcast:3]

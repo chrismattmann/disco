@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+ -->
+<disco:connector xmlns:disco="http://softarch.usc.edu/1.0/disco" name="Sienna" class="Event">
+  <event>
+    <cardinality producers="*" observers="*">
+      <producers>Access Points</producers>
+      <observers>Clients</observers>
+      <eventpatterns>
+        <pattern>Pub-Sub</pattern>
+        <pattern>Broadcast</pattern>
+        <pattern>Unicast</pattern>
+        <pattern>Multicast</pattern>
+        <pattern>Asychronous</pattern>
+        <pattern>Best Effort</pattern>
+      </eventpatterns>
+    </cardinality>
+    <delivery>Best Effort</delivery>
+    <priority>
+      <outgoing setby="producers"/>
+      <incoming setby="consumers"/>
+    </priority>
+    <synchronicity>Asychronous</synchronicity>
+    <notification>Pub-Sub</notification>
+    <causality/>
+    <mode type="Event">
+      <software>Signals</software>
+    </mode>
+  </event>
+  <dataaccess>
+    <locality>Process</locality>
+    <accesses>
+      <access>Accessor</access>
+      <access>Mutator</access>
+    </accesses>
+    <availabilities>
+      <transient>Session-Based</transient>
+      <persistents>
+        <persistent>Repository Access</persistent>
+        <persistent>File I/O</persistent>
+        <persistent>Dynamic Data Exchange</persistent>
+        <persistent>Database Access</persistent>
+      </persistents>
+    </availabilities>
+    <accessibility private="true" public="true"/>
+    <lifecycle/>
+    <cardinality senders="*" receivers="*"/>
+  </dataaccess>
+  <stream>
+    <deliveries>
+      <delivery>Best Effort</delivery>
+    </deliveries>
+    <bounds>Bounded</bounds>
+    <buffering>Buffered</buffering>
+    <throughput>bps</throughput>
+    <state>Stateful</state>
+    <identity>Named</identity>
+    <localities>
+      <locality>Local</locality>
+      <locality>Remote</locality>
+    </localities>
+    <synchronicity>Asynchronous</synchronicity>
+    <formats>
+      <format>Structured</format>
+      <format>Raw</format>
+    </formats>
+    <cardinality senders="*" receivers="*"/>
+  </stream>
+  <distributor>
+   <naming type="attribute-based">
+      <structure>Flat</structure>
+   </naming>
+   <delivery type="Event">
+     <semantics>
+        <semantic>Best Effort</semantic>
+     </semantics>
+     <mechanisms>
+       <mechanism>Unicast</mechanism>
+       <mechanism>Broadcast</mechanism>
+       <mechanism>Multicast</mechanism>
+     </mechanisms>
+   </delivery>
+     <routing type="content-based">
+      <membership>bounded</membership>
+      <path dynamic="true" static="false" cached="false"/>
+    </routing>
+  </distributor>
+</disco:connector>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+/* Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ */
+-->
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <context-param>
+    <param-name>edu.usc.softarch.disco.selection.bayes.dcpDir</param-name>
+    <param-value>/path/to/dcps</param-value>  
+  </context-param>
+  <context-param>
+    <param-name>edu.usc.softarch.disco.selection.bayes.valRange.file</param-name>
+    <param-value>/path/to/valRange.file</param-value>  
+  </context-param>
+  <context-param>
+    <param-name>edu.usc.softarch.disco.selection.bayes.domainProf.file</param-name>
+    <param-value>/path/to/domainProfile.file</param-value>  
+  </context-param>
+  
+  <servlet>
+    <servlet-name>BayesianSelectionServlet</servlet-name>
+    <servlet-class>edu.usc.softarch.disco.servlet.BayesianSelectionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BayesianSelectionServlet</servlet-name>
+    <url-pattern>/selection/bayes</url-pattern>
+  </servlet-mapping>
+</web-app>

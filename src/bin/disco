@@ -1,0 +1,59 @@
+#!/bin/tcsh
+# Copyright (c) 2006 University of Southern California.
+# All rights reserved.                                            
+#                                                               
+# Redistribution and use in source and binary forms are permitted
+# provided that the above copyright notice and this paragraph are
+# duplicated in all such forms and that any documentation, 
+# advertising materials, and other materials related to such 
+# distribution and use acknowledge that the software was 
+# developed by the Software Architecture Research Group at the 
+# University of Southern Calfornia.  The name of the University may 
+# not be used to endorse or promote products derived from this software 
+# without specific prior written permission.
+#
+# Any questions, comments, or or corrections should be mailed to the author 
+# of this code, Chris Mattmann, at: mattmann@usc.edu
+#
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+# IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+# PURPOSE.
+#
+#
+# The DISCO command script
+
+set DIR = `dirname $0`
+cd $DIR
+set DIR_PATH = `pwd`
+
+if ( $#argv == 0 ) then
+  echo "Usage: $0 COMMAND"
+  echo "where COMMAND is one of:"
+  echo "  gui               start up the DISCO GUI"
+  echo "  runner            runs the scenario runner"
+  echo "  analysis          runs the scenario analysis runner"
+  echo " or"
+  echo "  CLASSNAME         run the class named CLASSNAME"
+  echo "Most commands print help when invoked w/o parameters."
+  exit 1
+else	
+  # get arguments
+  set COMMAND = $1
+  
+  # figure out which class to run
+  if ("$COMMAND" == "gui" ) then
+   set CLASS=edu.usc.softarch.disco.gui.Launcher
+  else if ( "$COMMAND" == "runner" ) then
+   set CLASS=edu.usc.softarch.disco.tools.ScenarioRunner
+  else if ( "$COMMAND" == "analysis" ) then
+   set CLASS=edu.usc.softarch.disco.tools.ScenarioAnalyzerRunner
+  else
+   set CLASS=$COMMAND
+  endif
+
+  exec java -Djava.util.logging.config.file="$DIR_PATH/../etc/logging.properties" \
+  -Djava.ext.dirs="$DIR_PATH/../lib" $CLASS $*
+endif
+

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+ * Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+ -->
+ 
+<distributionScenario>
+  <totalVolume>150 TB</totalVolume>
+  <deliverySchedule>
+    <volumePerInterval>10 MB</volumePerInterval>
+    <numIntervals valtype="range">
+      <range>
+        <lowerbound inclusive="false">1</lowerbound>
+        <upperbound inclusive="false">100</upperbound>
+      </range>
+    </numIntervals>  
+  </deliverySchedule>
+  <numUsers valtype="range">
+    <range>
+      <lowerbound inclusive="true">1000</lowerbound>
+    </range>
+  </numUsers>
+  <userTypes>1</userTypes>
+  <geographicDistribution>
+     <type>WAN</type>
+  </geographicDistribution>
+  <performancereqs>
+    <consistency>9</consistency>
+    <dependability>5</dependability>
+    <scalability>9</scalability>
+    <efficiency>3</efficiency>
+  </performancereqs>
+  <accessPolicies>
+     <policy>User Authentication</policy>
+  </accessPolicies>
+  <dataTypes>
+    <type>data</type>
+    <type>metadata</type>
+  </dataTypes>
+</distributionScenario>
+ 

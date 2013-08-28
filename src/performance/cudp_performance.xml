@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* Copyright (c) 2007 University of Southern California.
+* All rights reserved.                                            
+*                                                                
+* Redistribution and use in source and binary forms are permitted
+* provided that the above copyright notice and this paragraph are
+* duplicated in all such forms and that any documentation, 
+* advertising materials, and other materials related to such 
+* distribution and use acknowledge that the software was 
+* developed by the Software Architecture Research Group at the 
+* University of Southern Calfornia.  The name of the University may 
+* not be used to endorse or promote products derived from this software 
+* without specific prior written permission.
+* 
+* Any questions, comments, or or corrections should be mailed to the author 
+* of this code, Chris Mattmann, at: mattmann@usc.edu
+*
+*
+* THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+* IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+* PURPOSE.
+* 
+* Author: Chris A. Mattmann
+* Revision: 1.0
+-->
+<disco:performanceprofile
+	xmlns:disco="http://softarch.usc.edu/1.0/disco" connector="Commercial UDP Technology">
+	<scenarios>
+		<scenario id="scenario6.xml">
+			<efficiency bps="0" avgMem="12857600" />
+			<consistency bytesSent="0" />
+			<dependability numFaults="0" />
+			<scalability numUsers="" totalVolume="104857600000"
+				userTypes="" />
+		</scenario>
+		<scenario id="scenario7.xml">
+			<efficiency bps="0" avgMem="0" />
+			<consistency bytesSent="0" />
+			<dependability numFaults="0" />
+			<scalability numUsers="0" totalVolume="10485760"
+				userTypes="0" />
+		</scenario>
+		<scenario id="scenario13.xml">
+			<efficiency bps="0" avgMem="14485776" />
+			<consistency bytesSent="0" />
+			<dependability numFaults="0" />
+			<scalability numUsers="0" totalVolume="104857600"
+				userTypes="0" />
+		</scenario>
+		<scenario id="scenario14.xml">
+			<efficiency bps="0" avgMem="15485786" />
+			<consistency bytesSent="0" />
+			<dependability numFaults="0" />
+			<scalability numUsers="0" totalVolume="104857600000"
+				userTypes="0" />
+		</scenario>		
+		<scenario id="scenario16.xml">
+			<efficiency bps="2000" avgMem="15485766" />
+			<consistency bytesSent="262144000" />
+			<dependability numFaults="0" />
+			<scalability numUsers="1" totalVolume="262144000"
+				userTypes="1" />
+		</scenario>
+	</scenarios>
+</disco:performanceprofile>

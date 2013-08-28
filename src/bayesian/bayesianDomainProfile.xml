@@ -1,0 +1,487 @@
+<?xml version="1.0"?>
+<!--
+ * Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+ -->
+ 
+ <domainProfile>
+ 
+  <!--  TotalVolume -->
+   <conditionalProb prob="0.80">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   <conditionalProb prob="0.30">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>     
+   <conditionalProb prob="0.20">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_transient_availability" value="Session-Based"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.10">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_transient_availability" value="Peer-Based"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.80">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_transient_availability" value="Cache"/>
+   </conditionalProb>      
+   <conditionalProb prob="0.95">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_cardinality_receivers" value="*"/>
+   </conditionalProb>
+   <conditionalProb prob="0.35">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_cardinality_receivers" value="1"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.95">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_cardinality_senders" value="*"/>
+   </conditionalProb>  
+   <conditionalProb prob="0.35">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="data_access_cardinality_senders" value="1"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="stream_bounds" value="Bounded"/>
+   </conditionalProb>  
+   <conditionalProb prob="0.95">
+     <obs var="TotalVolume" value="100 GB"/>
+     <sample var="stream_bounds" value="Un-Bounded"/>
+   </conditionalProb>  
+   
+   <conditionalProb prob="0.20">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.85">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   
+   <conditionalProb prob="0.30">
+     <obs var="TotalVolume" value="50 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.75">
+     <obs var="TotalVolume" value="50 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   
+   <conditionalProb prob="0.20">
+     <obs var="TotalVolume" value="geq 10 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.85">
+     <obs var="TotalVolume" value="geq 10 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   
+   <conditionalProb prob="0.05">
+     <obs var="TotalVolume" value="leq 2 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.85">
+     <obs var="TotalVolume" value="leq 2 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   
+   <conditionalProb prob="0.50">
+     <obs var="TotalVolume" value="gt 600 MB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.75">
+     <obs var="TotalVolume" value="gt 600 MB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+
+   <conditionalProb prob="0.60">
+     <obs var="TotalVolume" value="lt 1 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.75">
+     <obs var="TotalVolume" value="lt 1 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+   
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="gt 5 MB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.75">
+     <obs var="TotalVolume" value="gt 5 MB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+
+   <conditionalProb prob="0.75">
+     <obs var="TotalVolume" value="lt 10 MB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.77">
+     <obs var="TotalVolume" value="lt 10 MB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+   
+   <conditionalProb prob="0.20">
+     <obs var="TotalVolume" value="gt 2 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.88">
+     <obs var="TotalVolume" value="gt 2 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+
+   <conditionalProb prob="0.20">
+     <obs var="TotalVolume" value="lt 4 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.80">
+     <obs var="TotalVolume" value="lt 4 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+   
+   <conditionalProb prob="0.15">
+     <obs var="TotalVolume" value="1 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.88">
+     <obs var="TotalVolume" value="1 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+
+   <conditionalProb prob="0.45">
+     <obs var="TotalVolume" value="gt 10 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="gt 10 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+
+   <conditionalProb prob="0.45">
+     <obs var="TotalVolume" value="gt 10 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="gt 10 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+
+   <conditionalProb prob="0.30">
+     <obs var="TotalVolume" value="lt 50 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="lt 50 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>  
+   
+   <conditionalProb prob="0.05">
+     <obs var="TotalVolume" value="gt 10 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.85">
+     <obs var="TotalVolume" value="gt 10 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+   
+   <conditionalProb prob="0.10">
+     <obs var="TotalVolume" value="lt 50 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.80">
+     <obs var="TotalVolume" value="lt 50 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb> 
+
+   <conditionalProb prob="0.40">
+     <obs var="TotalVolume" value="gt 100 MB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.59">
+     <obs var="TotalVolume" value="gt 100 MB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+
+   <conditionalProb prob="0.25">
+     <obs var="TotalVolume" value="200 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.65">
+     <obs var="TotalVolume" value="200 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>        
+
+   <conditionalProb prob="0.45">
+     <obs var="TotalVolume" value="200 MB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="200 MB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+   
+   <conditionalProb prob="0.03">
+     <obs var="TotalVolume" value="gt 150 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.90">
+     <obs var="TotalVolume" value="gt 150 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>     
+ 
+   <conditionalProb prob="0.03">
+     <obs var="TotalVolume" value="150 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.90">
+     <obs var="TotalVolume" value="150 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>    
+
+   <conditionalProb prob="0.03">
+     <obs var="TotalVolume" value="20 TB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.90">
+     <obs var="TotalVolume" value="20 TB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>   
+
+   <conditionalProb prob="0.60">
+     <obs var="TotalVolume" value="1 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.75">
+     <obs var="TotalVolume" value="1 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>  
+   
+   <conditionalProb prob="0.59">
+     <obs var="TotalVolume" value="5 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.74">
+     <obs var="TotalVolume" value="5 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>  
+   
+   <!--  Total Volume: data access transient availability -->
+    <conditionalProb prob="0.25">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_trasient_availability" value="Session-Based"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_transient_availability" value="Peer-Based"/>
+   </conditionalProb>
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_transient_availability" value="Cache"/>
+   </conditionalProb>
+   
+   <conditionalProb prob="0.28">
+     <obs var="TotalVolume" value="50 GB"/>
+     <sample var="data_access_trasient_availability" value="Session-Based"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="50 GB"/>
+     <sample var="data_access_trasient_availability" value="Peer-Based"/>
+   </conditionalProb>
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="50 GB"/>
+     <sample var="data_access_trasient_availability" value="Cache"/>
+   </conditionalProb>
+      
+   <conditionalProb prob="0.25">
+     <obs var="TotalVolume" value="geq 10 GB"/>
+     <sample var="data_access_trasient_availability" value="Session-Based"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="geq 10 GB"/>
+     <sample var="data_access_trasient_availability" value="Peer-Based"/>
+   </conditionalProb>
+   <conditionalProb prob="0.55">
+     <obs var="TotalVolume" value="geq 10 GB"/>
+     <sample var="data_access_trasient_availability" value="Cache"/>
+   </conditionalProb>
+   
+   <conditionalProb prob="0.25">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_cardinality_senders" value="1"/>
+   </conditionalProb>
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_cardinality_senders" value="*"/>
+   </conditionalProb>
+   <conditionalProb prob="0.25">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_cardinality_receivers" value="1"/>
+   </conditionalProb>
+   <conditionalProb prob="0.70">
+     <obs var="TotalVolume" value="geq 100 GB"/>
+     <sample var="data_access_cardinality_receivers" value="*"/>
+   </conditionalProb>
+          
+   <!--  Num Users -->
+   <conditionalProb prob="0.90">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   <conditionalProb prob="0.20">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>
+   <conditionalProb prob="0.05">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_transient_availability" value="Session-Based"/>
+   </conditionalProb>
+   <conditionalProb prob="0.90">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_transient_availability" value="Peer-Based"/>
+   </conditionalProb>   
+   <conditionalProb prob="0.70">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_transient_availability" value="Cache"/>
+   </conditionalProb>
+   <conditionalProb prob="0.95">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_cardinality_receivers" value="*"/>
+   </conditionalProb>
+   <conditionalProb prob="0.25">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_cardinality_receivers" value="1"/>
+   </conditionalProb>
+   <conditionalProb prob="0.95">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_cardinality_senders" value="*"/>
+   </conditionalProb>
+   <conditionalProb prob="0.25">
+     <obs var="NumUsers" value="100"/>
+     <sample var="data_access_cardinality_senders" value="1"/>
+   </conditionalProb>
+   <conditionalProb prob="0.85">
+     <obs var="NumUsers" value="100"/>
+     <sample var="stream_bounds" value="Bounded"/>
+   </conditionalProb>  
+   <conditionalProb prob="0.95">
+     <obs var="NumUsers" value="100"/>
+     <sample var="stream_bounds" value="Un-Bounded"/>
+   </conditionalProb>     
+   
+   <!-- DeliverySchedule.VolumePerInterval -->
+   <conditionalProb prob="0.70">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>
+   <conditionalProb prob="0.30">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>		
+   <conditionalProb prob="0.10">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_transient_availability" value="Session-Based"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.85">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_transient_availability" value="Peer-Based"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.80">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_transient_availability" value="Cache"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_cardinality_receivers" value="*"/>   
+   </conditionalProb>
+   <conditionalProb prob="0.15">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_cardinality_receivers" value="1"/>
+   </conditionalProb>
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_cardinality_senders" value="*"/>   
+   </conditionalProb>
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="data_access_cardinality_senders" value="1"/>
+   </conditionalProb> 
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="stream_bounds" value="Bounded"/>
+   </conditionalProb>  
+   <conditionalProb prob="0.97">
+     <obs var="DeliverySchedule.VolumePerInterval" value="10 GB"/>
+     <sample var="stream_bounds" value="Un-Bounded"/>
+   </conditionalProb>     
+  
+   <!--  DeliverySchedule.NumbeOfIntervals -->
+   <conditionalProb prob="0.85">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_locality" value="Global"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.50">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_locality" value="Process"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.10">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_transient_availability" value="Session-Based"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.15">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_transient_availability" value="Peer-Based"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_transient_availability" value="Cache"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_cardinality_receivers" value="1"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_cardinality_receivers" value="*"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.85">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_cardinality_senders" value="1"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="data_access_cardinality_senders" value="*"/>
+   </conditionalProb>	
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="stream_bounds" value="Bounded"/>
+   </conditionalProb>  
+   <conditionalProb prob="0.95">
+     <obs var="DeliverySchedule.NumberOfIntervals" value="10"/>
+     <sample var="stream_bounds" value="Un-Bounded"/>
+   </conditionalProb>     
+ </domainProfile>

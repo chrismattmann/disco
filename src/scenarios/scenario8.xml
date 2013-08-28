@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+ * Copyright (c) 2006 University of Southern California.
+ * All rights reserved.                                            
+ *                                                                
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation, 
+ * advertising materials, and other materials related to such 
+ * distribution and use acknowledge that the software was 
+ * developed by the Software Architecture Research Group at the 
+ * University of Southern Calfornia.  The name of the University may 
+ * not be used to endorse or promote products derived from this software 
+ * without specific prior written permission.
+ * 
+ * Any questions, comments, or or corrections should be mailed to the author 
+ * of this code, Chris Mattmann, at: mattmann@usc.edu
+ *
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR 
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+ * PURPOSE.
+ * 
+ * Author: Chris A. Mattmann
+ * Revision: 1.0
+ -->
+ 
+<distributionScenario>
+  <totalVolume valtype="range">
+    <range>
+      <lowerbound inclusive="false">2 TB</lowerbound>
+      <upperbound inclusive="false">4 TB</upperbound>
+    </range>
+  </totalVolume>
+  <deliverySchedule>
+    <volumePerInterval>1 GB</volumePerInterval>
+    <numIntervals valtype="range">
+      <range>
+        <lowerbound inclusive="false">1</lowerbound>
+        <upperbound inclusive="false">1000</upperbound>
+      </range>
+    </numIntervals>  
+  </deliverySchedule>
+  <numUsers valtype="range">
+    <range>
+      <lowerbound inclusive="true">10</lowerbound>
+    </range>
+  </numUsers>
+  <userTypes>3</userTypes>
+  <geographicDistribution>
+     <type>WAN</type>
+     <type>LAN</type>
+  </geographicDistribution>
+  <performancereqs>
+    <consistency>8</consistency>
+    <dependability>8</dependability>
+    <scalability>2</scalability>
+    <efficiency>4</efficiency>
+  </performancereqs>
+  <accessPolicies>
+    <policy>Firewall</policy>
+    <policy>Linux Filesystem Permissions</policy>
+  </accessPolicies>
+  <dataTypes>
+    <type>metadata</type>
+    <type>data</type>
+  </dataTypes>
+</distributionScenario>
+ 
